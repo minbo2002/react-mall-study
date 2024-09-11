@@ -18,7 +18,7 @@ const todoRouter = () => {
             element: <Suspense fallback={Loading}> <TodoList/> </Suspense>
         },
         {
-            path: "read/:tno",  // useParam를 활용한 PathVariable 처리
+            path: "read/:tno",  // useParam를 활용한 PathVariable 처리.   ':' 는 경로의 일부를 변수로 사용하기 위한 설정
             element: <Suspense fallback={Loading}> <TodoRead/> </Suspense>
         },
         {
