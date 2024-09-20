@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { createSearchParams, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import ReadComponent from '../../components/todo/ReadComponent';
 
 function ReadPage(props) { // todo/IndexPage.js의 <Outlet/> 부분에 렌더링된다
 
@@ -28,8 +29,12 @@ function ReadPage(props) { // todo/IndexPage.js의 <Outlet/> 부분에 렌더링
     }, [page, size])
 
     return (
-      <div className="text-3xl font-extrabold">
+      <div className="font-extrabold w-full bg-white mt-6">
+        <div className="text-2xl">
           Todo Read Page Component {tno}
+        </div>
+
+        <ReadComponent tno={tno}></ReadComponent>
 
         <div>
           <button onClick={() => moveToModify(tno)}> Test modify </button> <br/>
