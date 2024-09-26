@@ -17,7 +17,7 @@ const initState = {
 }
 
 const ListComponent = () => {
-    const { page, size, moveToList } = useCustomMove();
+    const { page, size, refresh, moveToList, moveToRead } = useCustomMove();
 
     const [serverData, setServerData] = useState(initState);
     const [error, setError] = useState(null);
@@ -34,7 +34,7 @@ const ListComponent = () => {
             console.error("Error fetching todo list:", error);
             setError("Failed to fetch todo data");
         });
-    }, [page, size]);
+    }, [page, size, refresh]);
 
     if (error) {
         return <div className="text-red-500">{error}</div>;
@@ -44,7 +44,7 @@ const ListComponent = () => {
       <div className="border-2 border-blue-100 mt-10 mr-2 ml-2">   
             <div className="flex flex-wrap mx-auto justify-center p-6">
                 {serverData.dtoList.map(todo =>
-                <div key={todo.id} className="w-full min-w-[400px] p-2 m-2 rounded shadow-md">
+                <div key={todo.id} className="w-full min-w-[400px] p-2 m-2 rounded shadow-md" onClick={() => moveToRead(todo.id)}>
                     <div className="flex">
                         <div className="font-extrabold text-2xl p-2 w-1/12">
                             {todo.id}
